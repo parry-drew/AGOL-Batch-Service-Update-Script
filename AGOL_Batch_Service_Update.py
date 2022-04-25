@@ -24,7 +24,7 @@ for m in aprx.listMaps():
     print(sd_fs_name)
     
     # If you want to exclude some maps place your query to this loop.
-    if sd_fs_name != "QA": 
+    if "_QA" not in sd_fs_name: 
         # gets metadata info from the layer in each map
         layer = m.listLayers()[0]
         layer_metadata = layer.metadata
@@ -53,7 +53,7 @@ for m in aprx.listMaps():
 
         # Share to portal
         print("Start Uploading {0}".format(sd_fs_name))
-        arcpy.UploadServiceDefinition_server(sd_output_filename, server_type)
+        arcpy.UploadServiceDefinition_server(sd_output_filename, "HOSTING_SERVER")
 
         print("Finish Publishing {0}".format(sd_fs_name))
 
